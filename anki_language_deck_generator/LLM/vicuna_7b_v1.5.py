@@ -16,6 +16,7 @@ class Vicuna(LlmSingleShot):
         self.model = None
         self.tokenizer = None
         self.system_prompt = system_prompt
+        self.template = self._template.replace('{system}', system_prompt)
 
     def __enter__(self) -> 'Vicuna':
         self.tokenizer = AutoTokenizer.from_pretrained(
@@ -46,7 +47,9 @@ class Vicuna(LlmSingleShot):
             return False
 
     def shoot(self, prompt: str) -> str:
-        inputs = self.tokenizer(prompt, return_tensors="pt").to(VICUNA_MODEL.device)
+        filled_prompt = self._template.replace('query', prompt)
+
+        inputs = self.tokenizer(filled_prompt, return_tensors="pt").to(VICUNA_MODEL.device)
         outputs_gen = self.model.generate(
             **inputs,
             max_new_tokens=VICUNA_MODEL.max_new_tokens,
