@@ -11,6 +11,8 @@ VICUNA_MODEL = MODELS[VICUNA_7B_V15]
 
 class Vicuna(LlmSingleShot):
     _template: str = "{system} USER: {query} ASSISTANT:"
+    _split_key: str = "ASSISTANT:"
+    
 
     def __init__(self, system_prompt: str):
         self.model = None
@@ -47,7 +49,7 @@ class Vicuna(LlmSingleShot):
             return False
 
     def shoot(self, prompt: str) -> str:
-        filled_prompt = self._template.replace('query', prompt)
+        filled_prompt = self._template.replace('{system}', self.system_prompt).replace('query', prompt)
 
         inputs = self.tokenizer(filled_prompt, return_tensors="pt").to(VICUNA_MODEL.device)
         outputs_gen = self.model.generate(
@@ -59,6 +61,14 @@ class Vicuna(LlmSingleShot):
             top_k=VICUNA_MODEL.top_k,
             top_p=VICUNA_MODEL.top_p,
             eos_token_id=self.tokenizer.eos_token_id,
-            pad_token_id=self.tokenizer.eos_token_id,
+            pad_token_id=self.tokenizer.bos_token_id,
         )
-        return self.tokenizer.batch_decode(outputs_gen)[0]
+        
+        response = self.tokenizer.batch_decode(outputs_gen)[0]
+
+        pos = response.find(self._split_key)
+        if pos != -1:
+            return response[pos + len(self._split_key):].replace('</s>', '').strip()
+        else:
+            return None
+
