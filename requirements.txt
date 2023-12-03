@@ -1,4 +1,4 @@
--e git+ssh://git@github.com/saeedSarpas/AnkiLanguageDeckGenerator.git@f9fc4537df4843f518ac7d3ec39433e67631fa5f#egg=anki_language_deck_generator
+-e .
 anyio==4.1.0
 argon2-cffi==23.1.0
 argon2-cffi-bindings==21.2.0

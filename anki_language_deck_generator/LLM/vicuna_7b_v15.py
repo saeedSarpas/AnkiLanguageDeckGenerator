@@ -18,7 +18,6 @@ class Vicuna(LlmSingleShot):
         self.model = None
         self.tokenizer = None
         self.system_prompt = system_prompt
-        self.template = self._template.replace('{system}', system_prompt)
 
     def __enter__(self) -> 'Vicuna':
         self.tokenizer = AutoTokenizer.from_pretrained(
@@ -65,8 +64,8 @@ class Vicuna(LlmSingleShot):
         )
         
         response = self.tokenizer.batch_decode(outputs_gen)[0]
-
         pos = response.find(self._split_key)
+
         if pos != -1:
             return response[pos + len(self._split_key):].replace('</s>', '').strip()
         else:
