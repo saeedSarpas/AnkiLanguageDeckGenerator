@@ -40,3 +40,18 @@ MODELS: Dict[str, LlmSetting] = {
         top_p=None,
     )
 }
+
+
+class T2SLangSetting:
+    def __init__(self, model: str, speaker: str | None = None) -> None:
+        self.model = model
+        self.speaker = speaker
+
+TTS_V2_NAME = "tts-v2"
+
+T2S_MODELS: Dict[str, Dict[str, T2SLangSetting]] = {
+    TTS_V2_NAME: {
+        "en": T2SLangSetting(model="tts_models/en/vctk/vits", speaker="p270"),
+        "de": T2SLangSetting(model="tts_models/de/thorsten/tacotron2-DDC")
+    }
+}

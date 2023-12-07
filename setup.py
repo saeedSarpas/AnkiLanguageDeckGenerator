@@ -10,5 +10,7 @@ setup(
         "sentencepiece",
         "protobuf",
         "accelerate",
+        "TTS",
+        "nltk",
     ],
 )
