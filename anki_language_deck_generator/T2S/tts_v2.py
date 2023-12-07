@@ -16,6 +16,7 @@ class TTSV2(T2S):
 
     def __init__(self, lang: str, asset_dir_path: str):
         self.lang = lang
+        self.asset_dir_path = asset_dir_path
         self.tts = None
 
         if lang not in T2S_MODELS[TTS_V2_NAME]:
@@ -42,7 +43,8 @@ class TTSV2(T2S):
 
     
     def shoot(self, text: str, filename: str) -> str:
-        if self.speaker:
-            self.tts.tts_to_file(text=text, speaker=self.speaker, lang=self.lang, file_path=f"{filename}.wav")
-        else:
-            self.tts.tts_to_file(text=text, lang=self.lang, file_path=f"{filename}.wav")
+        self.tts.tts_to_file(
+            text=text,
+            speaker=self.speaker if self.speaker else None,
+            lang=self.lang,
+            file_path=f"{self.asset_dir_path}/{filename}.wav")
