@@ -40,7 +40,6 @@ class TTSV2(T2S):
         except Exception as e:
             print(f"Unable to gracefully stop TTS. Error: {e}")
             return False
-
     
     def shoot(self, text: str, filename: str) -> str:
         self.tts.tts_to_file(
