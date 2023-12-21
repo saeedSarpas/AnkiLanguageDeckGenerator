@@ -11,7 +11,7 @@ class AnkiStyle(ABC):
         raise Exception("I haven't been implemented yet")
 
     @abstractmethod
-    def get_template(self) -> str:
+    def get_templates(self) -> str:
         raise Exception("I haven't been implemented yet")
 
     @abstractmethod

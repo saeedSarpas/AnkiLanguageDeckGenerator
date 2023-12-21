@@ -19,8 +19,8 @@ class AnkiDeck:
         self.model = genanki.Model(
             self.model_id,
             deck_name,
-            fields=style.get_fields.to_genanki_fields(),
-            template=style.get_template,
+            fields=style.get_fields().to_genanki_fields(),
+            templates=style.get_templates,
             css=style.get_css
         )
 
@@ -35,7 +35,14 @@ class AnkiDeck:
 
         self.deck.add_note(anki_note)
 
-    def save(self, media: List[str]):
+    def save(self, media: List[str], prefix: str = '.') -> str | None:
         deck = genanki.Package(self.deck)
         deck.media_files = media
-        deck.write_to_file(f"{self.deck_name}_{datetime.now().strftime('%y%m%d%H%M%S')}.apkg")
+        path = f"{prefix}/{self.deck_name}_{datetime.now().strftime('%y%m%d%H%M%S')}.apkg"
+        try:
+            deck.write_to_file(path)
+            return path
+        except Exception as e:
+            print(f"Unable to save the deck on disk. message: {e}")
+            return None
+

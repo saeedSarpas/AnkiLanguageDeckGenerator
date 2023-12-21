@@ -22,3 +22,10 @@ def create_package_directory(directory_name: str) -> str:
 def create_temp_directory(directory_name: str) -> str:
     tmp_dir = tempfile.gettempdir()
     return _create_directory(tmp_dir, directory_name)
+
+def delete_file(file_path: str) -> int:
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        return 1
+
+    return 0

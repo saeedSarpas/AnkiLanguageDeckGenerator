@@ -59,8 +59,8 @@ class TwoSentencesPuzzlerStyle(AnkiStyle):
     def get_fields(self) -> 'AnkiFields':
         return TwoSentencesPuzzlerFields()
 
-    def get_template(self) -> str:
-        return TEMPLATE
+    def get_templates(self) -> str:
+        return TEMPLATES
 
     def get_css(self) -> str:
         return CSS
@@ -74,7 +74,7 @@ class TwoSentencesPuzzlerNote(AnkiNote):
         return list(self.note.values())
 
 
-TEMPLATE: AnkiTemplate = {
+TEMPLATES: List[AnkiTemplate] = [{
     'name': 'Two Sentence Puzzler Template',
     'qfmt': '''
 <div class="card">
@@ -115,7 +115,7 @@ TEMPLATE: AnkiTemplate = {
   [sound:{{2_trans_vce}}]
 </div>
 '''
-}
+}]
 
 CSS: str = '''
 .card {
