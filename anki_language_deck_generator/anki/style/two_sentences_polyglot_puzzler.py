@@ -1,26 +1,20 @@
-from anki_language_deck_generator.anki.interface import AnkiFields, AnkiNote
+from anki_language_deck_generator.anki.interface import AnkiFields, AnkiStyle, AnkiTemplate, AnkiNote
 from typing import TypedDict, Dict, List
 
-from .interface import AnkiStyle, AnkiTemplate
 
+class TwoSentencesPuzzlerStyle(AnkiStyle):
+    def __init__(self) -> None:
+        super().__init__()
 
-class TwoSentencesPuzzlerNoteType(TypedDict):
-    _1_pzl: str
-    _1_fil: str
-    _1_ans: str
-    _1_ans_trans: str
-    _1_trans: str
-    _1_pzl_vce: str
-    _1_fil_vce: str
-    _1_trans_vce: str
-    _2_pzl: str
-    _2_fil: str
-    _2_ans: str
-    _2_ans_trans: str
-    _2_trans: str
-    _2_pzl_vce: str
-    _2_fil_vce: str
-    _2_trans_vce: str
+    def get_fields(self) -> 'TwoSentencesPuzzlerFields':
+        fields = TwoSentencesPuzzlerFields()
+        return fields
+
+    def get_templates(self) ->  List[AnkiTemplate]:
+        return TEMPLATES
+
+    def get_css(self) -> str:
+        return CSS
 
 
 class TwoSentencesPuzzlerFields(AnkiFields):
@@ -50,19 +44,23 @@ class TwoSentencesPuzzlerFields(AnkiFields):
         return [{'name': field} for field in self.fields]
 
 
-class TwoSentencesPuzzlerStyle(AnkiStyle):
-    def __init__(self) -> None:
-        super().__init__()
-
-    def get_fields(self) -> 'TwoSentencesPuzzlerFields':
-        fields = TwoSentencesPuzzlerFields()
-        return fields
-
-    def get_templates(self) ->  List[AnkiTemplate]:
-        return TEMPLATES
-
-    def get_css(self) -> str:
-        return CSS
+class TwoSentencesPuzzlerNoteType(TypedDict):
+    _1_pzl: str
+    _1_fil: str
+    _1_ans: str
+    _1_ans_trans: str
+    _1_trans: str
+    _1_pzl_vce: str
+    _1_fil_vce: str
+    _1_trans_vce: str
+    _2_pzl: str
+    _2_fil: str
+    _2_ans: str
+    _2_ans_trans: str
+    _2_trans: str
+    _2_pzl_vce: str
+    _2_fil_vce: str
+    _2_trans_vce: str
 
 
 class TwoSentencesPuzzlerNote(AnkiNote):

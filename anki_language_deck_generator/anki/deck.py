@@ -4,24 +4,22 @@ import genanki
 from datetime import datetime
 from typing import List
 
-from .interface import AnkiNote
-from .style.interface import AnkiStyle
+from .interface import AnkiStyle, AnkiFields, AnkiNote
 
 
 class AnkiDeck:
-    def __init__(self, deck_name: str, style: AnkiStyle) -> None:
+    def __init__(self, deck_name: str, style: AnkiStyle, fields: AnkiFields) -> None:
         self.deck_name = deck_name
         self.style = style
+        self.fields = fields
         
         self.model_id = random.randrange(1 << 30, 1 << 31)
         self.deck_id = random.randrange(1 << 30, 1 << 31)
 
-        self.fields = style.get_fields()
-
         self.model = genanki.Model(
             self.model_id,
             deck_name,
-            fields=self.fields.to_genanki_fields(),
+            fields=fields.to_genanki_fields(),
             templates=style.get_templates(),
             css=style.get_css()
         )
