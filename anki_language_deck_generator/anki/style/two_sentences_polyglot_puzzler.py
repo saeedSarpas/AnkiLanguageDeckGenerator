@@ -64,9 +64,6 @@ class TwoSentencesPuzzlerNoteType(TypedDict):
 
 
 class TwoSentencesPuzzlerNote(AnkiNote):
-    def __init__(self, note: TwoSentencesPuzzlerNoteType) -> None:
-        super().__init__(note)
-
     def to_list(self) -> List[str]:
         return list(self.note.values())
 
