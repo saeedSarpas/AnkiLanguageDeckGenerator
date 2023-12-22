@@ -4,7 +4,7 @@ import genanki
 from datetime import datetime
 from typing import List
 
-from .interface import AnkiNote, AnkiFields
+from .interface import AnkiNote
 from .style.interface import AnkiStyle
 
 
@@ -16,15 +16,17 @@ class AnkiDeck:
         self.model_id = random.randrange(1 << 30, 1 << 31)
         self.deck_id = random.randrange(1 << 30, 1 << 31)
 
+        self.fields = style.get_fields()
+
         self.model = genanki.Model(
             self.model_id,
             deck_name,
-            fields=style.get_fields().to_genanki_fields(),
-            templates=style.get_templates,
-            css=style.get_css
+            fields=self.fields.to_genanki_fields(),
+            templates=style.get_templates(),
+            css=style.get_css()
         )
 
-        self.deck = genanki.Deck(self.deck_id, self.model)
+        self.deck = genanki.Deck(self.deck_id, self.deck_name)
 
 
     def add_note(self, note: AnkiNote) -> None:
@@ -45,4 +47,3 @@ class AnkiDeck:
         except Exception as e:
             print(f"Unable to save the deck on disk. message: {e}")
             return None
-

@@ -6,7 +6,6 @@ from .interface import AnkiStyle, AnkiTemplate
 
 class TwoSentencesPuzzlerNoteType(TypedDict):
     _1_pzl: str
-    _1_pzl_hint: str
     _1_fil: str
     _1_ans: str
     _1_ans_trans: str
@@ -15,7 +14,6 @@ class TwoSentencesPuzzlerNoteType(TypedDict):
     _1_fil_vce: str
     _1_trans_vce: str
     _2_pzl: str
-    _2_pzl_hint: str
     _2_fil: str
     _2_ans: str
     _2_ans_trans: str
@@ -25,12 +23,10 @@ class TwoSentencesPuzzlerNoteType(TypedDict):
     _2_trans_vce: str
 
 
-
 class TwoSentencesPuzzlerFields(AnkiFields):
     def __init__(self) -> None:
         self.fields = [
             '1_pzl', # 1st sentence puzzle
-            '1_pzl_hint', # 1st sentence puzzle with hint
             '1_fil', # 1st sentence filled
             '1_ans', # 1st sentence answer
             '1_ans_trans', # 1st sentence answer translation
@@ -39,7 +35,6 @@ class TwoSentencesPuzzlerFields(AnkiFields):
             '1_fil_vce', # 1st sentence filled voice
             '1_trans_vce', # 1st sentence translation voice
             '2_pzl', # 2nd sentence puzzle
-            '2_pzl_hint', # 2nd sentence puzzle with hint
             '2_fil', # 2nd sentence filled
             '2_ans', # 2nd sentence answer
             '2_ans_trans', # 2nd sentence answer translation
@@ -52,14 +47,18 @@ class TwoSentencesPuzzlerFields(AnkiFields):
         ]
 
     def to_genanki_fields(self) -> Dict[str, str]:
-        return {'name': filed for filed in self.fields}
+        return [{'name': field} for field in self.fields]
 
 
 class TwoSentencesPuzzlerStyle(AnkiStyle):
-    def get_fields(self) -> 'AnkiFields':
-        return TwoSentencesPuzzlerFields()
+    def __init__(self) -> None:
+        super().__init__()
 
-    def get_templates(self) -> str:
+    def get_fields(self) -> 'TwoSentencesPuzzlerFields':
+        fields = TwoSentencesPuzzlerFields()
+        return fields
+
+    def get_templates(self) ->  List[AnkiTemplate]:
         return TEMPLATES
 
     def get_css(self) -> str:
@@ -82,17 +81,9 @@ TEMPLATES: List[AnkiTemplate] = [{
     <p id="sentence1">{{1_pzl}}</p>
     <p id="sentence2">{{2_pzl}}</p>
   </div>
-  <button id="show-hints-btn">Show Hints</button>
   [sound:{{1_pzl_vce}}]
   [sound:{{2_pzl_vce}}]
 </div>
-
-<script>
-  document.getElementById('show-hints-btn').onclick = function() {
-    document.getElementById('sentence1').innerHTML = '{{1_pzl_hint}}';
-    document.getElementById('sentence2').innerHTML = '{{2_pzl_hint}}';
-  };
-</script>
     ''',
     'afmt': '''
 <div class="card">
@@ -121,11 +112,11 @@ CSS: str = '''
 .card {
   font-family: Arial, sans-serif;
   text-align: center;
-  color: #333;
-  background-color: #fff;
+  color: #333; /* Dark text color for light background */
+  background-color: #fff; /* Light background color */
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjusted for light theme */
 }
 
 p {
@@ -133,25 +124,10 @@ p {
   line-height: 1.6;
 }
 
-button {
-  background-color: #007aff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-button:hover {
-  background-color: #005ecb;
-}
-
 hr {
   margin: 20px 0;
   border: none;
   height: 1px;
-  background-color: #ccc;
+  background-color: #ccc; /* Adjusted for light theme */
 }
 '''
