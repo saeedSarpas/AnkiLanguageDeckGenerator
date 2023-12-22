@@ -12,5 +12,7 @@ setup(
         "accelerate",
         "TTS",
         "nltk",
+        "ankipandas",
+        "genanki",
     ],
 )
