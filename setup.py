@@ -14,5 +14,6 @@ setup(
         "nltk",
         "ankipandas",
         "genanki",
+        "diffusers",
     ],
 )

@@ -17,4 +17,3 @@ class T2S(ABC):
     @abstractmethod
     def shoot(self, text: str, filename: str) -> str:
         raise Exception("I haven't been implemented yet")
-
