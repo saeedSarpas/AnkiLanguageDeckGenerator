@@ -8,7 +8,7 @@ from anki_language_deck_generator.configs import T2S_MODELS, TTS_V2_NAME
 from .interface import T2S
 
 # Download Punkt tokenizer (divides a text into a list of sentences)
-nltk.download('punkt')
+nltk.download("punkt")
 
 
 class TTSV2(T2S):
@@ -24,12 +24,12 @@ class TTSV2(T2S):
 
         self.model = T2S_MODELS[TTS_V2_NAME][lang].model
         self.speaker = T2S_MODELS[TTS_V2_NAME][lang].speaker
-        
-    def __enter__(self) -> 'T2S':
+
+    def __enter__(self) -> "T2S":
         self.tts = TTS(self.model).to(self._device)
 
         return self
-        
+
     def __exit__(self, exc_type, exc_value, traceback) -> bool:
         try:
             del self.tts
@@ -40,10 +40,16 @@ class TTSV2(T2S):
         except Exception as e:
             print(f"Unable to gracefully stop TTS. Error: {e}")
             return False
-    
+
     def shoot(self, text: str, filename: str) -> str:
+        filename = filename.replace(".wav", "")
+        file_path = f"{self.asset_dir_path}/{filename}.wav"
+
         self.tts.tts_to_file(
             text=text,
             speaker=self.speaker if self.speaker else None,
             lang=self.lang,
-            file_path=f"{self.asset_dir_path}/{filename}.wav")
+            file_path=file_path,
+        )
+
+        return file_path

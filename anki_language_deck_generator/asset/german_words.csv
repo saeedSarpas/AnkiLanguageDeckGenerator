@@ -75,7 +75,7 @@ das Dorf,Noun
 das Glas,Noun
 nervös,Other
 zuhause,Other
-die Firma; die Firmen,Noun
+die Firma,Noun
 die Lust,Noun
 der Blick,Noun
 süß,Other
@@ -288,7 +288,7 @@ die Gelegenheit,Noun
 die Folge,Noun
 herausfinden,Verb
 die Verantwortung,Noun
-das Thema; die Themen,Noun
+das Thema,Noun
 leise,Other
 der Keller,Noun
 versagen,Verb
@@ -330,7 +330,7 @@ der Großvater,Noun
 entkommen,Verb
 der Fahrer,Noun
 die Million,Noun
-das Risiko; die Risiken,Noun
+das Risiko,Noun
 der Test,Noun
 ähnlich,Other
 mindestens,Other
@@ -369,7 +369,7 @@ die Lösung,Noun
 das Wetter,Noun
 schätzen,Verb
 der Champagner,Noun
-das Publikum; die Publika,Noun
+das Publikum,Noun
 dringend,Other
 der Bulle,Noun
 der Stuhl,Noun
@@ -567,7 +567,7 @@ spazieren gehen,Verb
 dicht,Other
 die Geburt,Noun
 geheim,Other
-das Universum; die Universen,Noun
+das Universum,Noun
 die Politik,Noun
 der Müll,Noun
 riskieren,Verb
@@ -738,7 +738,7 @@ die Wut,Noun
 die Farm,Noun
 bestellen,Verb
 das Jahrhundert,Noun
-der Virus; die Viren,Noun
+der Virus,Noun
 der Humor,Noun
 das Geräusch,Noun
 kompliziert,Other
@@ -753,7 +753,7 @@ die Pizza,Noun
 entfernen,Verb
 der Gegner,Noun
 behaupten,Verb
-die Basis; die Basen,Noun
+die Basis,Noun
 der Stahl,Noun
 das Viertel,Noun
 real,Other
@@ -770,11 +770,11 @@ der Hügel,Noun
 unglücklich,Other
 weitergehen,Verb
 der Fan,Noun
-das Museum; die Museen,Noun
+das Museum,Noun
 prüfen,Verb
 die Nation,Noun
 anschauen,Verb
-das Einkaufen; die Einkäufe,Noun
+das Einkaufen,Noun
 weich,Other
 einkaufen,Verb
 der Ausweis,Noun
@@ -894,7 +894,7 @@ ersparen,Verb
 die Befürchtung,Noun
 bereuen,Verb
 das Netz,Noun
-das Zentrum; die Zentren,Noun
+das Zentrum,Noun
 das Huhn,Noun
 das Ergebnis,Noun
 die Blume,Noun
@@ -915,7 +915,7 @@ liefern,Verb
 der Zorn,Noun
 extrem,Other
 der Antrag,Noun
-der Bau; die Bauten,Noun
+der Bau,Noun
 freiwillig,Other
 einladen,Verb
 die Bibel,Noun
@@ -930,7 +930,7 @@ der Hai,Noun
 reißen,Verb
 das Tagebuch,Noun
 die Sekretärin,Noun
-derselbe; dasselbe; dieselbe,Other
+derselbe,Other
 außen,Other
 klappen,Verb
 duschen,Verb
@@ -946,7 +946,7 @@ das Steuer,Noun
 der Kanal,Noun
 die Steuer,Noun
 der Ausdruck,Noun
-"der Bart; ""-e",Noun
+der Bart,Noun
 doppelt,Other
 die Beteiligung,Noun
 der Schmuck,Noun
@@ -1101,7 +1101,7 @@ ausrichten,Verb
 die Stirn,Noun
 die Technologie,Noun
 ansonsten,Other
-der Saal; die Säle,Noun
+der Saal,Noun
 die Strecke,Noun
 widerlich,Other
 angeln,Verb
@@ -1194,9 +1194,9 @@ die Bevölkerung,Noun
 die Persönlichkeit,Noun
 der Schneider,Noun
 bedienen,Verb
-die Villa; die Villen,Noun
+die Villa,Noun
 entdecken,Verb
-solcher; solches; solche,Other
+solcher,Other
 gelangen,Verb
 das Jubiläum,Noun
 der Stamm,Noun
@@ -1261,7 +1261,7 @@ geschieden,Other
 der Pfad,Noun
 klagen,Verb
 das Ausland,Noun
-das Datum; die Daten,Noun
+das Datum,Noun
 das Magazin,Noun
 das Kompliment,Noun
 der Januar,Noun
@@ -1290,7 +1290,7 @@ befragen,Verb
 bremsen,Verb
 der Neffe,Noun
 hauptsächlich,Other
-das Studium; die Studien,Noun
+das Studium,Noun
 das Produkt,Noun
 das Eisen,Noun
 die Bude,Noun
@@ -1378,7 +1378,7 @@ Polen,Other
 hilfreich,Other
 empfehlen,Verb
 fremd,Other
-selbe; derselbe; dasselbe; dieselbe,Other
+selbe,Other
 das Werkzeug,Noun
 zurückziehen,Verb
 der Tabak,Noun
@@ -1406,7 +1406,7 @@ das Gramm,Noun
 umarmen,Verb
 reif,Other
 die Schublade,Noun
-der Kosmos; die Kosmen,Noun
+der Kosmos,Noun
 verdanken,Verb
 die Kneipe,Noun
 das Konzept,Noun
@@ -1422,7 +1422,7 @@ heilig,Other
 organisieren,Verb
 endgültig,Other
 erweisen,Verb
-die Praxis; die Praxen,Noun
+die Praxis,Noun
 braun,Other
 das Silber,Noun
 weltweit,Other
@@ -1550,7 +1550,7 @@ bewundern,Verb
 die Fähre,Noun
 der Zoll,Noun
 Venedig,Other
-das Stadion; die Stadien,Noun
+das Stadion,Noun
 spinnen,Verb
 das Schaf,Noun
 die Alternative,Noun
@@ -1769,7 +1769,7 @@ der Handschuh,Noun
 der Rucksack,Noun
 erraten,Verb
 stumm,Other
-das Drama; die Dramen,Noun
+das Drama,Noun
 der Umgang,Noun
 ursprünglich,Other
 die Vase,Noun
@@ -2019,8 +2019,7 @@ der Architekt,Noun
 bislang,Other
 der Verein,Noun
 die Tonne,Noun
-"das Einkaufszentrum; die
-Einkaufszentren",Noun
+das Einkaufszentrum,Noun
 das Weihnachtsgeschenk,Noun
 der Lumpen,Noun
 der Aufsatz,Noun
@@ -2141,7 +2140,7 @@ der Dachboden,Noun
 das Seminar,Noun
 religiös,Other
 der Punk,Noun
-mancher; manches; manche,Other
+mancher,Other
 auflösen,Verb
 die Eigenschaft,Noun
 die Diebin,Noun
@@ -2316,7 +2315,7 @@ das Treppenhaus,Noun
 die Hochschule,Noun
 der Schnabel,Noun
 der Toaster,Noun
-das Gymnasium; die Gymnasien,Noun
+das Gymnasium,Noun
 das Taschengeld,Noun
 der Vormittag,Noun
 vorbeigehen,Verb
@@ -2748,7 +2747,7 @@ die Rückenschmerzen,Noun
 orientieren,Verb
 die Integration,Noun
 der Rhein,Noun
-die Lira; die Lire,Noun
+die Lira,Noun
 sportlich,Other
 beschädigen,Verb
 stinkig,Other
@@ -2769,7 +2768,7 @@ der Tenor,Noun
 der Knopf,Noun
 der Automat,Noun
 der Wasserhahn,Noun
-das Stadtzentrum; die Stadtzentren,Noun
+das Stadtzentrum,Noun
 einordnen,Verb
 die Spalte,Noun
 selbstständig,Other
@@ -2791,7 +2790,7 @@ ungewiss,Other
 beleuchten,Verb
 die Strumpfhose,Noun
 basteln,Verb
-der Beauftragter; die Beauftragten,Noun
+der Beauftragter,Noun
 ziellos,Other
 glitzern,Verb
 die Sommerferien,Noun
@@ -3238,11 +3237,11 @@ gottlos,Other
 die Diele,Noun
 der Fremdenführer,Noun
 der Tausendfüßler,Noun
-jahraus; jahrein,Other
+jahraus,Other
 die Fassung,Noun
 der Kork,Noun
 das Anzeichen,Noun
-der Walkman; die Walkmen,Noun
+der Walkman,Noun
 die Aufheiterung,Noun
 die Sitzung,Noun
 rosarot,Other
@@ -3257,7 +3256,7 @@ der Stadtplan,Noun
 würzig,Other
 die Richtigkeit,Noun
 modisch,Other
-"der Draht; ""-e",Noun
+der Draht,Noun
 die Kinderlähmung,Noun
 begrenzen,Verb
 die Mehrzahl,Noun
@@ -3300,7 +3299,7 @@ die Niederlande,Noun
 mangelhaft,Other
 pflegeleicht,Other
 aufstoßen,Verb
-das Kriterium; die Kriterien,Noun
+das Kriterium,Noun
 die Slowakei,Noun
 der Hausmann,Noun
 musizieren,Verb
@@ -3328,7 +3327,7 @@ das Nomen,Noun
 geometrisch,Other
 das Privathaus,Noun
 ADAC,Other
-die Überschrift; en,Noun
+die Überschrift,Noun
 implodieren,Verb
 der Pendler,Noun
 Schweizerisch,Other
@@ -3428,21 +3427,21 @@ der Auszubildende,Noun
 der Tatort,Noun
 erklärbar,Other
 die Rentenversicherung,Noun
-das Präsens; die Präsentia,Noun
+das Präsens,Noun
 der Teppichboden,Noun
 die Haarsträhne,Noun
 die Kuckucksuhr,Noun
 die Ferienzeit,Noun
 der Ferienjob,Noun
 das Tagesmenü,Noun
-der Konzertsaal; die Konzertsäle,Noun
+der Konzertsaal,Noun
 der Zweisitzer,Noun
 zahnlos,Other
 die Erschöpfung,Noun
 der Universitätsabschluss,Noun
 verhandeln,Verb
 exportieren,Verb
-der Hörsaal; die Hörsäle,Noun
+der Hörsaal,Noun
 prominent,Other
 überregional,Other
 der Arbeitskollege,Noun
@@ -3582,8 +3581,7 @@ der Erziehungsurlaub,Noun
 osteuropäisch,Other
 bayerisch,Other
 die Beobachtung,Noun
-"das Bundesministerium; die
-Bundesministerien",Noun
+das Bundesministerium,Noun
 beeindruckt,Other
 der Hauptberuf,Noun
 der Hochschulabschluss,Noun
@@ -3650,14 +3648,14 @@ vaterlos,Other
 das Spielwarengeschäft,Noun
 der Ortsname,Noun
 die Dreiergruppe,Noun
-die Peseta; die Peseten,Noun
+die Peseta,Noun
 einschmieren,Verb
 die Residenz,Noun
 emigrieren,Verb
 nieseln,Verb
 der Winterschlussverkauf,Noun
 das Softeis,Noun
-die Brauerei; en,Noun
+die Brauerei,Noun
 das Eigentum,Noun
 die Glückwunschkarte,Noun
 die Herrenabteilung,Noun
@@ -3667,7 +3665,7 @@ die Sportabteilung,Noun
 das Autobahnkreuz,Noun
 das Informationszeitalter,Noun
 zweisprachig,Other
-die Studienrichtung; en,Noun
+die Studienrichtung,Noun
 rezeptfrei,Other
 der Heimtrainer,Noun
 der Kulturschock,Noun
@@ -3971,7 +3969,7 @@ der Standpunkt,Noun
 das Reformhaus,Noun
 keinerlei,Other
 Verzeihung!,Other
-die Weltfirma; die Weltfirmen,Noun
+die Weltfirma,Noun
 das protokoll,Noun
 die Rubrik,Noun
 zu Hause sein,Verb
@@ -3998,7 +3996,7 @@ der Lastkraftwagen,Noun
 die Abwicklung,Noun
 Anfang Juli,Other
 in der Vergangenheit,Other
-"der schlag; ""e",Noun
+der schlag,Noun
 erzählen von,Verb
 Kann Ich Ihnen Helfen?,Other
 das Rotkäppchen,Noun
@@ -4066,7 +4064,7 @@ das Insekt,Noun
 mittellang,Other
 die Übung,Noun
 wie viele,Other
-die Angabe; n,Noun
+die Angabe,Noun
 morgen Nachmittag,Other
 Österreich,Other
 etwas treiben,Verb
@@ -4087,7 +4085,7 @@ zum Mittagessen,Other
 der Fahrradhelm,Noun
 eine Glatze bekommen,Verb
 um Rat fragen,Verb
-das Lexicon; die Lexica,Noun
+das Lexicon,Noun
 damalig,Other
 stattdessen,Other
 zum Abendessen,Other
@@ -4177,7 +4175,7 @@ der Jahrestag,Noun
 die verstärkung,Noun
 dort unten,Other
 sexuell,Other
-Die Erwartung; -en,Other
+Die Erwartung,Other
 die Buchung,Noun
 Bitte schön!,Other
 Viel Glück!,Other
@@ -4285,7 +4283,7 @@ zu Ende sein,Verb
 diejenigen,Other
 die Schwarzwälder Kirschtorte,Noun
 der Anbau,Noun
-jeglicher;,Other
+jeglicher,Other
 schaden,Verb
 grenzen an,Verb
 die Betrachtung,Noun
@@ -4336,7 +4334,7 @@ sich beeilen,Verb
 riechen nach,Verb
 morgen früh,Other
 schnappen,Verb
-Island; -,Other
+Island,Other
 das Postfach,Noun
 auslegen,Verb
 sonstig,Other
@@ -4396,12 +4394,12 @@ der Gesetzgeber,Noun
 versetzen,Verb
 fertig schreiben,Verb
 der Moderator,Noun
-"der Beschluss; ""-e",Noun
-die Todesstrafe; n,Noun
+der Beschluss,Noun
+die Todesstrafe,Noun
 die Genehmigung,Noun
 vorstellbar,Other
 schrittweise,Other
-die Freiheitsstrafe; n,Noun
+die Freiheitsstrafe,Noun
 der Stellvertreter,Noun
 gleichermaßen,Other
 größtenteils,Other

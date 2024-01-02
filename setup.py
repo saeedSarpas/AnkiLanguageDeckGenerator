@@ -1,10 +1,13 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='anki_language_deck_generator',
-    version='0.1',
+    name="anki_language_deck_generator",
+    version="0.1",
     packages=find_packages(),
     install_requires=[
+        "mypy",
+        "pandas",
+        "fastparquet",
         "torch",
         "transformers",
         "sentencepiece",
@@ -15,5 +18,7 @@ setup(
         "ankipandas",
         "genanki",
         "diffusers",
+        "spacy",
+        "BeautifulSoup",
     ],
 )
