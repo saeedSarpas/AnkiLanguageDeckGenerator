@@ -1,4 +1,4 @@
-# Anki Language Deck Generator
+# Anki AI Helper
 
 ## Overview
 
@@ -11,7 +11,7 @@ Before starting the setup, ensure you have Python >3.8 installed on your system.
 
 ## Setup Instructions
 
-Follow these steps to set up the Anki Language Deck Generator in your local environment.
+Follow these steps to set up the Anki AI Helper in your local environment.
 
 ### Environment Setup
 
@@ -81,7 +81,7 @@ TODO: Improve the instruction on how to create a new Anki Style and Deck.
 
 ## Contributing
 
-We welcome contributions to the Anki Language Deck Generator! If you have suggestions for improvements or encounter any
+We welcome contributions to the Anki AI Helper! If you have suggestions for improvements or encounter any
 issues, please feel free to open an issue or submit a pull request on GitHub. 
 
 ## License
