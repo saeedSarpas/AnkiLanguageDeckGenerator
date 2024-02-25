@@ -17,7 +17,7 @@ class Vicuna7Bv15(LlmSingleShot):
         self.tokenizer = None
         self.system_prompt = system_prompt
 
-    def __enter__(self) -> "Vicuna":
+    def __enter__(self) -> "Vicuna7Bv15":
         self.tokenizer = AutoTokenizer.from_pretrained(
             MODEL_NAME,
             use_fast=True,
