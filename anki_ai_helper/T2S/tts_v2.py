@@ -2,13 +2,26 @@ import gc
 import nltk
 import torch
 from TTS.api import TTS
-
-from anki_language_deck_generator.configs import T2S_MODELS, TTS_V2_NAME
+from typing import Dict
 
 from .interface import T2S
 
 # Download Punkt tokenizer (divides a text into a list of sentences)
 nltk.download("punkt")
+
+
+class T2SLangSetting:
+    def __init__(self, model: str, speaker: str | None = None) -> None:
+        self.model = model
+        self.speaker = speaker
+
+
+TTS_V2_NAME = "tts-v2"
+
+T2S_MODELS: Dict[str, T2SLangSetting] = {
+    "en": T2SLangSetting(model="tts_models/en/vctk/vits", speaker="p270"),
+    "de": T2SLangSetting(model="tts_models/de/thorsten/tacotron2-DDC"),
+}
 
 
 class TTSV2(T2S):
@@ -19,11 +32,11 @@ class TTSV2(T2S):
         self.asset_dir_path = asset_dir_path
         self.tts = None
 
-        if lang not in T2S_MODELS[TTS_V2_NAME]:
+        if lang not in T2S_MODELS:
             raise Exception(f"Language is not supported currently. Lang: {lang}")
 
-        self.model = T2S_MODELS[TTS_V2_NAME][lang].model
-        self.speaker = T2S_MODELS[TTS_V2_NAME][lang].speaker
+        self.model = T2S_MODELS[lang].model
+        self.speaker = T2S_MODELS[lang].speaker
 
     def __enter__(self) -> "T2S":
         self.tts = TTS(self.model).to(self._device)

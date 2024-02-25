@@ -10,25 +10,25 @@ import os
 from pydub import AudioSegment
 import pandas as pd
 
-from anki_language_deck_generator.LLM.interface import LlmSingleShot
-from anki_language_deck_generator.dataset.interface import (
+from anki_ai_helper.LLM.interface import LlmSingleShot
+from anki_ai_helper.dataset.interface import (
     WordList,
     NOUN_TYPE,
     VERB_TYPE,
 )
-from anki_language_deck_generator.anki.style.two_sentence_puzzler import (
+from anki_ai_helper.anki.style.two_sentence_puzzler import (
     TwoSentencePuzzlerDataFrame,
     TwoSentencePuzzlerStyle,
     TwoSentencePuzzlerFields,
     TwoSentencePuzzlerNote,
 )
-from anki_language_deck_generator.T2S.tts_v2 import TTSV2
-from anki_language_deck_generator.anki.deck import AnkiDeck
+from anki_ai_helper.T2S.tts_v2 import TTSV2
+from anki_ai_helper.anki.deck import AnkiDeck
 
-from anki_language_deck_generator.helper import string as str_helper
-from anki_language_deck_generator.helper import english as eng_helper
-from anki_language_deck_generator.helper import german as ger_helper
-from anki_language_deck_generator.helper import io as io_helper
+from anki_ai_helper.helper import string as str_helper
+from anki_ai_helper.helper import english as eng_helper
+from anki_ai_helper.helper import german as ger_helper
+from anki_ai_helper.helper import io as io_helper
 
 
 class AiSprachMeisterPrompt:

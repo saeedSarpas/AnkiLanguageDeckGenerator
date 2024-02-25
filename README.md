@@ -1,4 +1,4 @@
-# Anki Language Deck Generator
+# Anki AI Helper
 
 ## Overview
 
@@ -11,7 +11,7 @@ Before starting the setup, ensure you have Python >3.8 installed on your system.
 
 ## Setup Instructions
 
-Follow these steps to set up the Anki Language Deck Generator in your local environment.
+Follow these steps to set up the Anki AI Helper in your local environment.
 
 ### Environment Setup
 
@@ -66,9 +66,9 @@ Within JupyterLab, locate and open the `Tutorial.ipynb` notebook. This tutorial 
 
 For users interested in further customization, follow these guidelines to create new Anki styles and decks:
 
-- **Custom Styles:** To create a new style, navigate to the `anki_language_deck_generator.anki.styles` directory. Duplicate an existing style (e.g., `two_sentence_puzzler.py`) template and rename it to your preference. Modify the CSS and back and front cards definition within the file to achieve your desired look and feel for the Anki cards.
+- **Custom Styles:** To create a new style, navigate to the `anki_ai_helper.anki.styles` directory. Duplicate an existing style (e.g., `two_sentence_puzzler.py`) template and rename it to your preference. Modify the CSS and back and front cards definition within the file to achieve your desired look and feel for the Anki cards.
 
-- **Custom Decks:** Creating a custom deck involves defining the fields and templates for your Anki cards. Navigate to `anki_language_deck_generator.anki` and duplicate an existing deck (e.g., `ai_sprach_meister.py`).
+- **Custom Decks:** Creating a custom deck involves defining the fields and templates for your Anki cards. Navigate to `anki_ai_helper.anki` and duplicate an existing deck (e.g., `ai_sprach_meister.py`).
 
 Please open a pull request if you believe your new deck can help other people.
 
@@ -81,7 +81,7 @@ TODO: Improve the instruction on how to create a new Anki Style and Deck.
 
 ## Contributing
 
-We welcome contributions to the Anki Language Deck Generator! If you have suggestions for improvements or encounter any
+We welcome contributions to the Anki AI Helper! If you have suggestions for improvements or encounter any
 issues, please feel free to open an issue or submit a pull request on GitHub. 
 
 ## License
