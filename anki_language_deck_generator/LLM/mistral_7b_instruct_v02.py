@@ -5,26 +5,26 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from .interface import LlmSingleShot
 
 
-MODEL_NAME = "lmsys/vicuna-7b-v1.5"
+MODEL_NAME = "mistralai/Mistral-7B-Instruct-v0.2"
+device = "cuda"
 
 
-class Vicuna7Bv15(LlmSingleShot):
-    _template: str = "{system} USER: {query} ASSISTANT:"
-    _split_key: str = "ASSISTANT:"
+class Mistral7BInstructV02(LlmSingleShot):
+    _template: str = "{system} [INST] {query} [/INST]"
+    _split_key: str = "[/INST]"
 
     def __init__(self, system_prompt: str):
         self.model = None
         self.tokenizer = None
         self.system_prompt = system_prompt
 
-    def __enter__(self) -> "Vicuna":
+    def __enter__(self) -> "Mistral7BInstructV02":
         self.tokenizer = AutoTokenizer.from_pretrained(
             MODEL_NAME,
             use_fast=True,
             model_max_length=4096,
             do_sample=True,
         )
-
         self.model = AutoModelForCausalLM.from_pretrained(
             MODEL_NAME,
             device_map="cuda",

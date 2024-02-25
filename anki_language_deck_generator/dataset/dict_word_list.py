@@ -1,7 +1,6 @@
-import os
 import pandas as pd
 
-from typing import Iterator, List
+from typing import Iterator, List, Dict
 
 from .interface import (
     WordList,
@@ -14,13 +13,13 @@ from .interface import (
 )
 
 
-class GermanWordList(WordList):
-    def __init__(self, f: int = 0, t: int = -1) -> None:
-        path = f"{os.path.dirname(os.path.dirname(__file__))}/asset/german_words.csv"
-        self.df: WordListDF = pd.read_csv(path)
-
-        if f != 0 or t != -1:
-            self.df = self.df[f:t]
+class DictWordList(WordList):
+    def __init__(self, entries: Dict) -> None:
+        data = {
+            "word": entries.keys(),
+            "type": entries.values(),
+        }
+        self.df: WordListDF = pd.DataFrame(data)
 
     def __iter__(self) -> Iterator[WordListRow]:
         for _, row in self.df.iterrows():
