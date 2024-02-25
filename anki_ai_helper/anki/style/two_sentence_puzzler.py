@@ -1,7 +1,7 @@
 from typing import ClassVar, Dict, List
 
-from anki_language_deck_generator.anki.interface import AnkiTemplate, AnkiNote
-from anki_language_deck_generator.helper.dataframe import GenericDataFrame
+from anki_ai_helper.anki.interface import AnkiTemplate, AnkiNote
+from anki_ai_helper.helper.dataframe import GenericDataFrame
 
 
 class TwoSentencePuzzlerDataFrame(GenericDataFrame):

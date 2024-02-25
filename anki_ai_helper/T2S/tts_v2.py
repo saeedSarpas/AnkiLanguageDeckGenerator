@@ -3,7 +3,7 @@ import nltk
 import torch
 from TTS.api import TTS
 
-from anki_language_deck_generator.configs import T2S_MODELS, TTS_V2_NAME
+from anki_ai_helper.configs import T2S_MODELS, TTS_V2_NAME
 
 from .interface import T2S
 
