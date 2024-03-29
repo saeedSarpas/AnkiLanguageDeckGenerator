@@ -19,6 +19,6 @@ setup(
         "genanki",
         "diffusers",
         "spacy",
-        "BeautifulSoup",
+        "beautifulsoup4",
     ],
 )
