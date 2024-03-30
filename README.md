@@ -25,10 +25,11 @@ Follow these steps to set up the Anki AI Helper in your local environment.
 
    On Windows, use `.\.venv\Scripts\activate` to activate the environment.
 
-2. **Install Dependencies**
-   Install all required packages using the following command:
+2. **Install the Package**
+   Install the package and all its required python packages using the following command in the editable mode:
+
     ```shell
-    pip install -r requirements.txt
+    pip install -e .
     ```
 
 ## Usage
@@ -68,7 +69,7 @@ For users interested in further customization, follow these guidelines to create
 
 - **Custom Styles:** To create a new style, navigate to the `anki_ai_helper.anki.styles` directory. Duplicate an existing style (e.g., `two_sentence_puzzler.py`) template and rename it to your preference. Modify the CSS and back and front cards definition within the file to achieve your desired look and feel for the Anki cards.
 
-- **Custom Decks:** Creating a custom deck involves defining the fields and templates for your Anki cards. Navigate to `anki_ai_helper.anki` and duplicate an existing deck (e.g., `ai_sprach_meister.py`).
+- **Custom Decks:** Creating a custom deck involves defining the fields and templates for your Anki cards. Navigate to `anki_ai_helper/anki` and duplicate an existing deck (e.g., `ai_sprach_meister.py`).
 
 Please open a pull request if you believe your new deck can help other people.
 

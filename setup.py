@@ -20,5 +20,6 @@ setup(
         "diffusers",
         "spacy",
         "beautifulsoup4",
+        "pydub",
     ],
 )
