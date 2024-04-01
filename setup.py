@@ -19,6 +19,7 @@ setup(
         "genanki",
         "diffusers",
         "spacy",
-        "BeautifulSoup",
+        "beautifulsoup4",
+        "pydub",
     ],
 )
