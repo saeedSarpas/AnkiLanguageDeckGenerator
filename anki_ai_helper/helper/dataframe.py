@@ -50,7 +50,11 @@ class GenericDataFrame:
 
     def validate_schema(self, data: pd.DataFrame):
         if set(data.columns) != set(self.column_types.keys()):
-            raise SchemaMismatchError("DataFrame schema does not match expected schema")
+            raise SchemaMismatchError(
+                f"""DataFrame schema does not match expected schema
+                    Expected Columns: {self.column_types.keys()}
+                    Actual Columns:   {data.columns}"""
+            )
 
         for column, expected_type in self.column_types.items():
             if not pd.api.types.is_dtype_equal(
@@ -90,9 +94,9 @@ class GenericDataFrame:
 
     def upsert(self, key: str, entries: dict):
         if self.is_duplicate(key):
-            self.df.loc[
-                self.df[self.key_column] == key, entries.keys()
-            ] = entries.values()
+            self.df.loc[self.df[self.key_column] == key, entries.keys()] = (
+                entries.values()
+            )
         else:
             new_row = pd.DataFrame([{self.key_column: key, **entries}])
             self.df = pd.concat([self.df, new_row], ignore_index=True)

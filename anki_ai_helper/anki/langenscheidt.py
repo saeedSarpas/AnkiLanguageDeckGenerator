@@ -1,5 +1,3 @@
-import torch
-from typing import Dict, Optional
 from tqdm import tqdm
 import traceback
 import random
@@ -37,7 +35,7 @@ class Langenscheidt:
 
     def fill_sentences(self):
         try:
-            for row in tqdm(self.word_list):
+            for row in tqdm(self.word_list, desc="Filling sentences"):
                 self.puzzler.upsert(
                     row.word,
                     {
@@ -56,7 +54,7 @@ class Langenscheidt:
         self._fetch_extra_noun_info()
         self._fetch_extra_verb_info()
 
-    def to_voice(self, force=False):
+    def to_voice(self):
         dir_path = io_helper.create_package_directory(self.filename)
 
         german_columns = [
@@ -78,9 +76,7 @@ class Langenscheidt:
                 "1_fil": f"{row['word'] + '.' if not expl_1_processed else ''}{expl_1_processed}",
             }
 
-        self._generate_voices(
-            "de", dir_path, german_columns, force, german_additional_texts
-        )
+        self._generate_voices("de", dir_path, german_columns, german_additional_texts)
 
         english_columns = [
             "word",
@@ -94,47 +90,41 @@ class Langenscheidt:
                 "1_trans": f"{row['word_trans']}. " if row.get("word_trans") else "",
             }
 
-        self._generate_voices(
-            "en", dir_path, english_columns, force, english_additional_texts
-        )
+        self._generate_voices("en", dir_path, english_columns, english_additional_texts)
 
         self.puzzler.store(self.filename)
 
     def convert_to_mp3(self):
-        dir_path = io_helper.create_package_directory(self.filename)
+        try:
+            dir_path = io_helper.create_package_directory(self.filename)
 
-        for word in tqdm(self.word_list):
-            w = word["word"]
+            for word in tqdm(self.word_list, desc="Converting to MP3"):
+                w = word["word"]
 
-            row = self.puzzler.get_values(
-                key=w,
-                columns=[
-                    "1_pzl_vce",
-                    "1_fil_vce",
-                ],
-            )
+                row = self.puzzler.get_values(
+                    key=w,
+                    columns=[
+                        "1_pzl_vce",
+                        "1_fil_vce",
+                        "1_trans_vce",
+                    ],
+                )
 
-            if not row:
-                continue
+                if not row:
+                    print(f"Unknown word: {w}")
+                    continue
 
-            for vce_filename in filter(None, row.values()):
-                self._convert_single_wav_file_to_mp3(vce_filename, dir_path)
+                for vce_filename in filter(None, row.values()):
+                    self._convert_single_wav_file_to_mp3(vce_filename, dir_path)
 
-            self.puzzler.store(self.filename)
+                self.puzzler.store(self.filename)
+        except Exception as e:
+            print("Something went wrong", e)
 
-    def package_deck(
-        self, cards_per_deck: int, n_decks: int = None, force_all: bool = False
-    ):
+    def package_deck(self):
         dir_path = io_helper.create_package_directory(self.filename)
         deck_style = OneSentencePuzzlerStyle()
         deck_fields = OneSentencePuzzlerFields()
-
-        total_words = len(self.word_list)
-        n_decks_calc = (
-            n_decks
-            if n_decks
-            else (total_words // cards_per_deck) + bool(total_words % cards_per_deck)
-        )
 
         columns = [
             "word",
@@ -148,89 +138,46 @@ class Langenscheidt:
             "expl_1",
         ]
 
-        for deck_n in range(1, n_decks_calc + 1):
-            l = (deck_n - 1) * cards_per_deck
-            u = min(deck_n * cards_per_deck, total_words)
-            deck_words = self.word_list.to_list()[l:u]
+        deck_words = self.word_list.to_list()
 
-            deck = AnkiDeck(
-                deck_name=f"{self.filename} - {deck_n}",
-                style=deck_style,
-                fields=deck_fields,
+        deck = AnkiDeck(
+            deck_name=f"{self.filename}",
+            style=deck_style,
+            fields=deck_fields,
+        )
+        media = []
+
+        for word in tqdm(deck_words, desc="Packaging the Deck"):
+            w = word.word
+            t = word.type
+            row = self.puzzler.get_values(key=w, columns=columns)
+
+            vce_keys = [key for key in columns if key.endswith("_vce") and row.get(key)]
+            for vce_key in vce_keys:
+                media.append(
+                    os.path.join(dir_path, row[vce_key].replace(".wav", ".mp3"))
+                )
+
+            note_fields = {key: row.get(key, "") for key in columns}
+            note_fields.update(
+                {key: f"[sound:{row[key].replace('.wav', '.mp3')}]" for key in vce_keys}
             )
-            media = []
+            note_fields["expl_1"] = (
+                _expl_to_string(row.get("expl_1"), t) if row.get("expl_1") else ""
+            )
+            note_fields["expl_2"] = ""
 
-            for word in tqdm(deck_words):
-                w = word.word
-                t = word.type
-                row = self.puzzler.get_values(key=w, columns=columns)
+            note = OneSentencePuzzlerNote(note_fields)
+            deck.add_note(note)
 
-                if not force_all and (
-                    not row or not all(row.get(key) for key in columns[:-1])
-                ):
-                    continue
-
-                vce_keys = [
-                    key for key in columns if key.endswith("_vce") and row.get(key)
-                ]
-                for vce_key in vce_keys:
-                    media.append(
-                        os.path.join(dir_path, row[vce_key].replace(".wav", ".mp3"))
-                    )
-
-                note_fields = {key: row.get(key, "") for key in columns}
-                note_fields.update(
-                    {
-                        key: f"[sound:{row[key].replace('.wav', '.mp3')}]"
-                        for key in vce_keys
-                    }
-                )
-                note_fields["expl_1"] = (
-                    _expl_to_string(row.get("expl_1"), t) if row.get("expl_1") else ""
-                )
-                note_fields["expl_2"] = ""
-
-                note = OneSentencePuzzlerNote(note_fields)
-                deck.add_note(note)
-
-            _ = deck.save(media)
-
-    def _generate_descriptive_and_example_senteces_for_word(
-        self, word: str, force: bool
-    ):
-        w = word.word
-        t = word.type
-        if not force and self.puzzler.is_duplicate(w):
-            return None
-
-        trans = self.prompt.translate(self.llm, w, t)
-        if not trans:
-            return None
-
-        w_en = trans["English"]
-        descriptive = self.prompt.describe(self.llm, w, t, w_en)
-        example = self.prompt.example(self.llm, w, t, w_en)
-        if not descriptive or not example:
-            return None
-
-        return {
-            "word": w,
-            "entries": {
-                "word_trans": eng_helper.remove_article(w_en),
-                "1_fil": descriptive["German"],
-                "1_pzl": ger_helper.obscure_closest_word(
-                    descriptive["German"], ger_helper.remove_article(w)
-                ),
-                "1_trans": descriptive["English"],
-            },
-        }
+        _ = deck.save(media)
 
     def _store_progress(self, index, interval: int = 25):
         if (index + 1) % interval == 0 or index + 1 == len(self.word_list):
             self.puzzler.store(self.filename)
 
     def _fetch_extra_verb_info(self):
-        for word in tqdm(self.word_list):
+        for word in tqdm(self.word_list, desc="Fetching extra verb info"):
             w = word.word
             t = word.type
 
@@ -270,7 +217,7 @@ class Langenscheidt:
         self.puzzler.store(self.filename)
 
     def _fetch_extra_noun_info(self):
-        for word in tqdm(self.word_list):
+        for word in tqdm(self.word_list, desc="Fetching extra noun info"):
             w = word.word
             t = word.type
 
@@ -298,10 +245,10 @@ class Langenscheidt:
         self.puzzler.store(self.filename)
 
     def _generate_voices(
-        self, language, dir_path, columns, force, additional_text_callback=None
+        self, language, dir_path, columns, additional_text_callback=None
     ):
         with TTSV2(language, dir_path) as tts:
-            for i, word in enumerate(tqdm(self.word_list)):
+            for i, word in enumerate(tqdm(self.word_list, desc="Generating voices")):
                 w = word.word
                 t = word.type
 
@@ -309,10 +256,6 @@ class Langenscheidt:
                     key=w,
                     columns=columns,
                 )
-
-                voice_needed = any(not row.get(col) for col in columns if "vce" in col)
-                if not force and row and not voice_needed:
-                    continue
 
                 filenames = {
                     col: _gen_random_wav_filename(i) for col in columns if "vce" in col
@@ -326,20 +269,22 @@ class Langenscheidt:
 
                 self.puzzler.store(self.filename)
 
-    def _handle_single_row_to_voice(
-        self, row, w, tts, filenames, additional_texts=None
-    ):
-        if additional_texts is None:
-            additional_texts = {}
+    def _handle_single_row_to_voice(self, row, w, tts, filenames, additional_texts={}):
         for key, filename in filenames.items():
-            text_key = key.split("_")[0]
+            if row.get(key) and (
+                row.get(key).endswith(".wav") or row.get(key).endswith(".mp3")
+            ):
+                continue
+
+            text_key = key.replace("_vce", "")
+
             if row.get(text_key):
                 text = row[text_key]
                 if text_key in additional_texts:
                     text = additional_texts[text_key] + text
-                if not row.get(filename):
-                    _ = tts.shoot(text, filename)
-                    self.puzzler.upsert(key_value=w, entries={filename: filename})
+
+                _ = tts.shoot(text, filename)
+                self.puzzler.upsert(key_value=w, entries={key: filename})
 
     def _convert_single_wav_file_to_mp3(self, vce_filename, dir_path):
         filepath = os.path.join(dir_path, vce_filename)
