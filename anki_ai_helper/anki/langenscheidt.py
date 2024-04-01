@@ -41,6 +41,9 @@ class Langenscheidt:
                     {
                         "word_trans": row.word_trans,
                         "1_fil": row.sentence,
+                        "1_pzl": ger_helper.obscure_closest_word(
+                            row.sentence, ger_helper.remove_article(row.word)
+                        ),
                         "1_trans": row.sentence_trans,
                     },
                 )
